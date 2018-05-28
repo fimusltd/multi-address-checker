@@ -3,12 +3,12 @@
 import fileinput
 import re
 import pybitcoin
-from pybitcoin import BitcoinPrivateKey #pip install pybitcoin
-from pybitcoin import BitcoinPublicKey #pip install pybitcoin
-import requests #pip install -U requests[socks]
+import requests
 import re
 import argparse
-from tqdm import tqdm #pip install tqdm
+from pybitcoin import BitcoinPrivateKey
+from pybitcoin import BitcoinPublicKey
+from tqdm import tqdm
 
 args=""
 
