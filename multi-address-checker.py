@@ -26,10 +26,10 @@ def privateKeyToAddress(private_key):
 def checkBalance(address):
 	global args
 	if(args.anonymous):
-		resp = requests.get('https://blockchain.info/es/q/addressbalance/' + address, 
-			proxies=dict(http='socks5://localhost:9050',https='socks5://localhost:9050')).text
+		resp = requests.get('https://blockchainbdgpzk.onion/q/addressbalance/' + address, 
+			proxies=dict(http='socks5h://localhost:9050',https='socks5h://localhost:9050')).text
 	else:
-		resp = requests.get('https://blockchain.info/es/q/addressbalance/' + address).text
+		resp = requests.get('https://blockchain.info/q/addressbalance/' + address).text
 	if resp.isdigit():
 		return int(resp)
 	else:
@@ -88,7 +88,6 @@ def main():
 				#print(address + " has " + str(balance) + " satoshi (" + str(float(balance)/float(100000000)) + " BTC)")
 				with open(args.output, "a") as myfile:
 					myfile.write(address + ",," + str(balance) + "\n")
-				pass
 			pbar.update(1)
 
 		for private_key in private_keys:
@@ -99,7 +98,6 @@ def main():
 				#print(address + " " + str(balance) + " has " + str(balance) + " satoshi (" + str(float(balance)/float(100000000)) + " BTC)")
 				with open(args.output, "a") as myfile:
 					myfile.write(address + "," + private_key + "," + str(balance) + "\n")
-				pass
 			pbar.update(1)
 
 	print("")
